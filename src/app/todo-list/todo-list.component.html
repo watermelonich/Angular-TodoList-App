@@ -1,0 +1,17 @@
+<div class="header">
+    <h2 style="color: white;">To-Do List</h2>
+    <input class="todo-thing" [(ngModel)]="newTask" (keyup.enter)="addTask()" placeholder="Add a new task">
+  </div>
+  
+  <div class="todo-container">
+    <div *ngFor="let column of columns; let i = index" class="column">
+      <ul>
+        <li *ngFor="let task of column.tasks; let j = index" [ngClass]="{'completed': task.completed}">
+          <input type="checkbox" [(ngModel)]="task.completed">
+          {{ task.text }}
+          <button class="delete-button" (click)="removeTask(i, j)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
